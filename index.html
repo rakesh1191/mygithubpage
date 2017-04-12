@@ -13,6 +13,81 @@
     
     <link rel="stylesheet" type="text/css" href="css/normalize.css" />
     <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <script type="text/javascript">    
+         angular.module('rApp', ['ngMaterial']) .controller('buttonController', buttonController);
+         function buttonController ($scope) {
+            $scope.title1 = 'Button';
+            $scope.title4 = 'Warn';
+            $scope.isDisabled = true;
+            $scope.googleUrl = 'http://google.com';
+            $scope.show=true;
+            $scope.about=false;
+            $scope.skills=false;
+            $scope.others=false;
+            $scope.showTab = function(){
+              if ($scope.show==false)
+              {
+                $scope.show = true;  
+                $scope.about = false;  
+                $scope.skills=false;
+                $scope.others=false;  
+              }else
+              {
+                $scope.show = false;   
+              }
+            }
+            $scope.showAbout = function(){
+              if ($scope.about==false)
+              {
+                $scope.about = true;  
+                $scope.show = false; 
+                $scope.skills=false;
+                $scope.others=false;   
+              }else
+              {
+                $scope.about = false;   
+              }
+            }
+            $scope.showSkills = function(){
+              if ($scope.skills == false)
+              {
+                $scope.skills = true;
+                $scope.about = false;  
+                $scope.show = false;
+                $scope.others=false;    
+              }else
+              {
+                $scope.skills = false;   
+              }
+            }
+            $scope.showOthers = function(){
+              if ($scope.others == false)
+              {
+                $scope.others=true;
+                $scope.skills = false;
+                $scope.about = false;  
+                $scope.show = false;    
+              }else
+              {
+                $scope.others = false;   
+              }
+            }
+         };
+      </script>
+      <style type="text/css">
+      .md-raised{
+         color : rgb(49, 46, 46);
+         background-color: green;
+ 
+      }
+      </style>
 <style>
     .backImg {
     background-image:url("Images/keyboard_graphic_photo.png");
@@ -33,6 +108,37 @@
     .p_font {
     font-size:15px;
     }
+    .footer {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      padding: 1rem;
+      text-align: center;
+    }
+    .pSetStyle{
+      font-size: 15px;
+    }
+    .fabSpeedDialdemoBasicUsage .text-capitalize {
+  text-transform: capitalize; }
+
+.fabSpeedDialdemoBasicUsage .md-fab:hover, .fabSpeedDialdemoBasicUsage .md-fab.md-focused {
+  background-color: #000 !important; }
+
+.fabSpeedDialdemoBasicUsage p.note {
+  font-size: 1.2rem; }
+
+.fabSpeedDialdemoBasicUsage .lock-size {
+  min-width: 300px;
+  min-height: 300px;
+  width: 300px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto; }
+  md-tabs.md-default-theme md-ink-bar, md-tabs md-ink-bar {
+    color: blue !important;
+    background-color:red !important;
+}
 </style>
 <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -46,74 +152,292 @@
 </script>
 </head>
 <body class="container" style="text-align:center;background-color:white;overflow:hidden">
-    <div class="container">
-        <header id="ha-header" class="ha-header ha-header-large">
-            <br /><br /><br />
-           <div  class="ha-header-perspective" style="width:initial">
-                <div class="ha-header-front" style="border-bottom:solid">
-                    <h1 style="text-align:center;align-content:center;padding-bottom:0px"><span>Rakesh Suryavanshi  <h5>I am Web Developer, Application Developer and Computer Science Student</h5><a href="#" class="btn btn-info" role="button">Download Resume</a>
-<a class="btn btn-lg btn-social-icon btn-facebook" href="https://www.facebook.com/rakesh.suryavanshi.98" target="_blank">
-    <span class="fa fa-facebook"></span>
-</a>
-<a class="btn btn-lg btn-social-icon btn-github" href="https://github.com/rakesh1191" target="_blank">
-    <span class="fa fa-github"></span>
-</a>
-<a class="btn btn-lg btn-social-icon btn-linkedin" href="https://www.linkedin.com/in/rakeshsuryavanshi" target="_blank">
-    <span class="fa fa-linkedin"></span>
-</a></span></h1>
-                    
-                </div>
-                    <div class="ha-header-bottom">
-                        
-                        <nav style="font-size:larger;text-align:right">                            
-                            <a href="#project">Projcts</a>
-                            <a>Skills</a>
-                            <a>Education</a>
-                            <a>Contact</a>
-                        </nav>
-                        </div>
+<div ng-app="rApp" ng-cloak>
+    <div class="container" ng-controller="buttonController">
+    <br/>
+        <header id="ha-header" class="ha-header">                
+            <div class="ha-header-front" style="border-bottom:2px solid;-moz-transform: scale(1);">
+            <md-content md-dynamic-height flex>            
+                  <md-content style="overflow: hidden;" md-dynamic-height>
+                  <img  style="width: 120px;height: 125px;border-radius: 30px;padding: 5px;margin: 10px;box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);" src="images/r.jpg"/>
+                  <h1 ><span>Rakesh Suryavanshi  
+                  <h5>I am a Web Developer, Application Developer   and Computer Science Student</h5>
+                  <!-- <a href="#" class="btn btn-info" role="button">Download Resume</a> -->
+                  </h1>
                   
-                </div>
-            </header>
-        <section style="background-color:lightskyblue;color:black;background-color:white">
-            <br /><br />
-            
-            <p></p>
-           
-            
-        </section>
-        <section class="ha-waypoint"  data-animate-up="ha-header-rotateBack" style="background-color:white;color:black">
-            
-        </section>
-        <section id="project" class="ha-waypoint" data-animate-up="ha-header-rotateBack" style="background-color:white;color:black">
-            <br /><br /><br /><br /><br />  <br /><br /><br />
-            <header class="green_header" style="text-align:center"></header>
-            <a class="project_header"></a>
-            <p >
-                <div class="p_font">
-                            </div>
-            </p>
-        </section>
-        
-</div>  
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="js/waypoints.min.js"></script>
-    <script>
-			var $head = $( '#ha-header' );
-			$( '.ha-waypoint' ).each( function(i) {
-				var $el = $( this ),
-					animClassDown = $el.data( 'animateDown' ),
-					animClassUp = $el.data( 'animateUp' );
+                  </md-content>
 
-				$el.waypoint( function( direction ) {
-					if( direction === 'down' && animClassDown ) {
-						$head.attr('class', 'ha-header ' + animClassDown);
-					}
-					else if( direction === 'up' && animClassUp ){
-						$head.attr('class', 'ha-header ' + animClassUp);
-					}
-				}, { offset: '100%' } );
-			} );
-    </script>      
+                  <md-content layout-align="center center" layout="row" flex="105">                  
+                  <md-button class="md-raised md-primary md-hue-2" ng-click="showTab()">Projects</md-button>
+                  <md-button class="md-raised md-warn" ng-click="showAbout()">About</md-button>
+                  <md-button class="md-raised md-primary md-hue-2" ng-click="showSkills()">Skills</md-button>
+                  <md-button class="md-raised md-warn" ng-click="showOthers()">Others</md-button>     
+                  <div>
+                        <md-fab-speed-dial md-direction="right" class="md-scale md-warn" ng-mouseenter="rApp.isOpen=true" ng-mouseleave="rApp.isOpen=false">
+                          <md-fab-trigger>
+                            <md-button aria-label="menu" class="md-fab md-raised">
+                              <md-icon><img style="padding-bottom: 20px;" src="images/format-list-bulleted.png"/></md-icon>
+                            </md-button>
+                          </md-fab-trigger>
+                          <md-fab-actions>
+                            <md-button aria-label="Twitter" class="md-fab md-raised md-mini" ng-href="https://www.linkedin.com/in/rakeshsuryavanshi">
+                              <md-icon md-font-icon="classname"><img style="padding-bottom: 20px;" src="images/linkedin.png"/></md-icon>
+                            </md-button>
+                            <md-button aria-label="Facebook" class="md-fab md-raised md-mini" ng-href="https://www.facebook.com/rakesh.suryavanshi.98">
+                              <md-icon aria-label="Facebook"><img style="padding-bottom: 20px;" src="images/facebook.png"/></md-icon>
+                            </md-button>
+                            <md-button aria-label="Google Hangout" class="md-fab md-raised md-mini" ng-href="https://github.com/rakesh1191">
+                              <md-icon aria-label="Google Hangout"><img style="padding-bottom: 20px;" src="images/github.png"/></md-icon>
+                            </md-button>
+                          </md-fab-actions>
+                        </md-fab-speed-dial>
+                        
+                      </div>
+                  <md-content></md-content>           
+                  </md-content>
+            </md-content>
+            </div>            
+                <md-tabs md-dynamic-height md-border-bottom ng-show="show" >
+                    <md-tab label="Destist Portal">
+                        <md-content layout="row" layout-padding>
+                            <div style="text-align: left;" class="pSetStyle" flex="40">                            
+                            <md-content>
+                              <md-list flex>                              
+                                <md-list-item class="md-1-line" ng-click="null">                                   
+                                  <div class="md-list-item-text" layout="column">
+                                  <h5>
+                                  <md-icon style="color: limegreen;"><i class="material-icons">label</i></md-icon>
+                                    Live Appointment system, discharge summaries and lab results.</h5>
+                                  </div>
+                                </md-list-item>
+                              </md-list>
+                              <md-divider ></md-divider>
+                              <md-list-item class="md-1-line" ng-click="null">
+                                  
+                                  <div class="md-list-item-text" layout="column">
+                                  <h5>
+                                  <md-icon style="color: limegreen;"><i class="material-icons">label</i></md-icon>
+                                    Upcoming appointments with email notification, chat system.</h5>
+                                  </div>
+                                </md-list-item>                              
+                              <md-divider ></md-divider>
+                              <md-list-item class="md-1-line" ng-click="null">
+                                  
+                                  <div class="md-list-item-text" layout="column">
+                                  <h5>
+                                  <md-icon style="color: limegreen;"><i class="material-icons">label</i></md-icon>
+                                    Disable users using AJAX: jQuery Autocomplete with Categories using JSON.</h5>
+                                  </div>
+                                </md-list-item>
+                              <md-divider ></md-divider>                              
+                              <md-list-item class="md-1-line" ng-click="null">
+                                  
+                                  <div class="md-list-item-text" layout="column">
+                                  <h5>
+                                  <md-icon style="color: limegreen;"><i class="material-icons">label</i></md-icon>
+                                    Spring security</h5s>
+                                    
+                                  </div>
+                                </md-list-item>
+                            <md-divider ></md-divider>
+                            </md-content> 
+                            </div> 
+                            <div flex="5"></div>                          
+                            <div style="text-align: left;" flex>
+                            <md-list-item class="md-1-line" ng-click="null">
+                                  
+                                  <div class="md-list-item-text" layout="column">                                    
+                                  <h5>
+                                  <md-icon style="color: limegreen;"><i class="material-icons ">label</i></md-icon>
+                                    <strong>Tools and Technologies:</strong> Spring MVC, Hibernate, AJAX, jQuery, JSP.</h5>
+                                  </div>
+                                </md-list-item>
+                            <md-divider ></md-divider><br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Github:&nbsp;&nbsp;<a href="https://github.com/rakesh1191/MyDentistPortal" target="_blank"><img style="width: 30px;height: 30px;" src="images/GitHub-Mark-64px.png"></a>
+                            </div>                            
+                        </md-content>
+                    </md-tab>
+                    <md-tab label="Big Data with Elastic Search">
+                    <div layout="row" layout-xs="column">
+                      <div layout-align="start center" flex>
+                      <md-list-item class="md-1-line" ng-click="null">                        
+                            <div class="md-list-item-text" layout="column">                                    
+                            <h5>
+                              <md-icon style="color: limegreen;"><i class="material-icons ">label</i></md-icon>
+                              Used Amazon Elastic Search Service</h5>
+                            </div>
+                        </md-list-item>
+                      <md-divider ></md-divider>
+                      <md-list-item class="md-1-line" ng-click="null">                        
+                            <div class="md-list-item-text" layout="column">                                    
+                            <h5><md-icon style="color: limegreen;"><i class="material-icons ">label</i></md-icon>
+                              Data Acquisition using twitter and Facebook API</h5>
+                            </div>
+                        </md-list-item>
+                      <md-divider ></md-divider>
+                      <md-list-item class="md-1-line" ng-click="null">                          
+                        <div class="md-list-item-text" layout="column">                                    
+                          <h5>  
+                            <md-icon style="color: limegreen;"><i class="material-icons ">label</i></md-icon>
+                              mongoDB for storage
+                          </h5>
+                        </div>
+                      </md-list-item>
+                      <md-divider ></md-divider>
+                      </div>
+                      <div flex>   
+                      Github:&nbsp;&nbsp;<a href="https://github.com/rakesh1191/beautiful-data-project-elite-coders/tree/branch-rakesh" target="_blank"><img style="width: 30px;height: 30px;" src="images/GitHub-Mark-64px.png"></a>                     
+                      </div>
+                      <div flex></div>
+                       </div>
+                    </md-tab>
+                    <md-tab label="Search Engine">
+                     <div layout="row" layout-xs="column">
+                      <div layout-align="start center" flex>
+                      <md-list-item class="md-1-line" ng-click="null">                        
+                            <div class="md-list-item-text" layout="column">                                    
+                            <h5>
+                            <md-icon style="color: limegreen;"><i class="material-icons ">label</i></md-icon>
+                              Done parsing html data and metadata extraction.</h5>
+                            </div>
+                        </md-list-item>
+                      <md-divider ></md-divider>
+                      <md-list-item class="md-1-line" ng-click="null">                        
+                            <div class="md-list-item-text" layout="column">                                    
+                              <h5>
+                            <md-icon style="color: limegreen;"><i class="material-icons ">label</i></md-icon>
+                              Stored metadata information as JSON data.</h5>
+                            </div>
+                        </md-list-item>
+                      <md-divider ></md-divider>
+                      <md-list-item class="md-1-line" ng-click="null">                       
+                            <div class="md-list-item-text" layout="column">                                    
+                              <h5>
+                             <md-icon style="color: limegreen;"><i class="material-icons ">label</i></md-icon>
+                              Indexing and Searching with Apache Lucene.</h5>
+                            </div>
+                        </md-list-item>
+                      <md-divider ></md-divider>
+                      </div>
+                      <div flex>
+                      Github:&nbsp;&nbsp;<a href="https://github.com/rakesh1191/CS-Crawlers" target="_blank"><img style="width: 30px;height: 30px;" src="images/GitHub-Mark-64px.png"></a>
+                      </div>
+                      <div flex></div>
+                       </div>
+                    </md-tab>
+                    <md-tab label="Lease Management System">
+                    <div layout="row" layout-xs="column">
+                      <div flex>
+                       <md-list-item class="md-1-line" ng-click="null">                        
+                            <div class="md-list-item-text" layout="column">                                    
+                            <h5>
+                            <md-icon style="color: limegreen;"><i class="material-icons ">label</i></md-icon>
+                              Worked on handling multiple requests.</h5>
+                            </div>
+                        </md-list-item>
+                        <md-divider ></md-divider>
+                        <md-list-item class="md-1-line" ng-click="null">                        
+                            <div class="md-list-item-text" layout="column">                                    
+                            <h5>
+                            <md-icon style="color: limegreen;"><i class="material-icons ">label</i></md-icon>
+                              JSTL tag library and bootstrap for displaying and requesting data.</h5>
+                            </div>
+                        </md-list-item>
+                        <md-divider ></md-divider>
+                        <md-list-item class="md-1-line" ng-click="null">                        
+                            <div class="md-list-item-text" layout="column">
+                            <h5>
+                            <md-icon style="color: limegreen;"><i class="material-icons ">label</i></md-icon>
+                              Used java servlet as a back end and JSP as a front end technology.</h5>
+                            </div>
+                        </md-list-item> 
+                        <md-divider ></md-divider>                       
+                      </div>
+                      <div flex>                        
+
+                      </div>
+                      <div flex>                        
+                      </div>
+                      </div>
+                    </md-tab>
+                    <!-- <md-tab label="Game Design">
+                    2
+                    </md-tab> -->
+                    <md-tab label="Watermark Website">
+                     <div layout="row" layout-xs="column">
+                      <div flex>
+                      <md-list-item class="md-1-line" ng-click="null">                        
+                            <div class="md-list-item-text" layout="column">                                    
+                            <h5>
+                            <md-icon style="color: limegreen;"><i class="material-icons ">label</i></md-icon>
+                              Implemented image watermark using ASP .NET</h5>
+                            </div>
+                        </md-list-item>
+                        <md-divider ></md-divider>
+                        <md-list-item class="md-1-line" ng-click="null">
+                        
+                            <div class="md-list-item-text" layout="column">                                    
+                              <h5>
+                            <md-icon style="color: limegreen;"><i class="material-icons ">label</i></md-icon>
+                              Features: made custom editor (Watermark on Image, Color, Font, Size)</h5>
+                            </div>
+                        </md-list-item>
+                        <md-divider ></md-divider>
+                      </div>
+                      <div flex>
+                       Github:&nbsp;&nbsp;<a href="https://github.com/rakesh1191/Watermark-Images" target="_blank"><img style="width: 30px;height: 30px;" src="images/GitHub-Mark-64px.png"></a>  
+                      </div>
+                      <div flex>
+
+                        </div>
+                      </div>
+                    </md-tab>
+
+                </md-tabs>
+                <!-- about content -->
+                <md-content layout="row" layout-align="center center" ng-show="about" flex>
+                <div flex>
+                 <div class="lock-size" layout="row" layout-align="center center" ng-cloak>
+                    <div>
+                    <h5><strong>Rakesh Suryavanshi</strong></h5>
+                    <p>Currently studying in Calfornia State University, Los Angeles</p>
+                    <p>MS in Computer Science, Expected completion date: August 2017</p>
+                    </div>
+                  </div>
+                </div>
+                </md-content>
+                <!-- skills content -->
+                <md-content layout="row" layout-align="center center" ng-show="skills" flex>
+                <div flex>
+                 <div class="lock-size" layout="row" layout-align="center center" ng-cloak>
+                    <div><strong>
+                     <p>Languages : Java, C#, Python, SQL.</p>
+                     <p>Web Technologies : J2EE, Asp .NET, JSP.</p>
+                     <p>Front End Technologies : jQuery, Bootstrap, JavaScript, AJAX, HTML, CSS.</p>
+                     <p>Databases : MySQL, SQL Server 2008</p> 
+                     <p>Frameworks/Libraries : .NET Framework 3.0/4.0,Spring, hibernate, AngularJS, Node.js, Gradle, Maven.</p>
+                     </strong>
+                    </div>
+                  </div>
+                </div>
+                </md-content>
+                <!-- others content -->
+                <md-content layout="row" layout-align="center center" ng-show="others" flex>
+                <div flex>
+                 <div class="lock-size" layout="row" layout-align="center center" ng-cloak>
+                    <div>
+                    
+                    </div>
+                  </div>
+                </div>
+                </md-content>
+            </md-content>       
+        </div>
+        
+    </div>
+    <div class="footer">
+          Rakesh Suryavanshi
+    </div>
+</div>
 </body>
 </html>
